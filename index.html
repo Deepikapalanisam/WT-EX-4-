@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FORM VALIDATION</title>
+    <style>
+        body {
+            background-image: url("bg.jpeg"); 
+            background-repeat: no-repeat;
+            background-size: cover; 
+        }
+        #form{
+           position: absolute;
+           left: 27%;
+           top: 35%;
+
+        }
+        body{
+            background-color: aqua;
+        }
+        h3{
+            font-weight: bold;
+        }
+        #btn{
+            display: flex;
+            gap: 20px;
+            flex-direction:row ;
+        }
+
+    </style>
+    <script>
+      function validateForm() {
+        let x = document.forms["myform"]["ffname"].value;
+        if (x == "") {
+            alert("First Name must be filled out");
+            document.forms["myform"]["ffname"].focus();
+            return false;
+        }
+
+        let x1 = document.forms["myform"]["fmname"].value;
+        if (x1 == "") {
+            alert("Middle Name must be filled out");
+            document.forms["myform"]["fmname"].focus();
+            return false;
+        }
+
+        let x2 = document.forms["myform"]["flname"].value;
+        if (x2 == "") {
+            alert("Last Name must be filled out");
+            document.forms["myform"]["flname"].focus();
+            return false;
+        }
+
+        let x3 = document.forms["myform"]["fdate"].value;
+        if (x3 == "") {
+            alert("Date of Birth must be filled out");
+            document.forms["myform"]["fdate"].focus();
+            return false;
+        }
+
+        let x4 = document.forms["myform"]["faddress"].value;
+        if (x4 == "") {
+            alert("Address must be filled out");
+            document.forms["myform"]["faddress"].focus();
+            return false;
+        }
+
+        let x5 = document.forms["myform"]["fgender"].value;
+        if (x5 == "") {
+            alert("Gender must be selected");
+            return false;
+        }
+
+        let x6 = document.forms["myform"]["femail"].value;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(x6)) {
+            alert("Invalid email address");
+            document.forms["myform"]["femail"].focus();
+            return false;
+        }
+
+        let x7 = document.forms["myform"]["fmobile"].value;
+        let mobilePattern = /^\d{10}$/; 
+        if (x7 == "") {
+            alert("Mobile Number must be filled out");
+            document.forms["myform"]["fmobile"].focus();
+            return false;
+        } else if (!mobilePattern.test(x7)) {
+            alert("Mobile Number must contain 10 digits");
+            document.forms["myform"]["fmobile"].focus();
+            return false;
+        }
+
+        let x8 = document.forms["myform"]["fcourse"].value;
+        if (x8 == "") {
+            alert("Course must be selected");
+            return false;
+        }
+        let x9 = document.forms["myform"]["fdept"].value;
+        if (x9 == "") {
+            alert("Department must be selected");
+            return false;
+        }
+        alert("Form submitted successfully");
+        return true;
+     }
+  </script>
+</head>
+<body >
+    <img src="kec1.png" align="right" width="100" height="100">
+    <img src="kec2.jpeg" align="left" width="100" height="100">
+    <h1  style="color:blue;"><center>KONGU ENGINEERING COLLEGE</center></h1>
+    <h4 style="color: blueviolet;"><center>STUDENT REGISTRATION FORM</center></h4><br>
+    <hr><br><br>
+    <center><div id="form">
+    <form name="myform" action="" onsubmit="return validateForm()" method="post">
+               <pre>
+                First-name   :   <input type="text" name="ffname" id="ffname" placeholder="First Name"><br><br>
+                Middle-name  :   <input type="text" name="fmname" id="fmname" placeholder="Middle Name" disabled><br><br>
+                Last-name    :   <input type="text" name="flname" id="flname" placeholder="Last Name" disabled><br><br>
+        DOB          :   <input type="date" name="fdate" id="fdate" placeholder="Date of Birth" disabled><br><br>
+             Address       :   <textarea rows="4" name="faddress" id="faddress" placeholder="Address" disabled></textarea><br><br>
+Gender      :   <input type="radio" name="fgender" id="fgender-male" value="male" disabled> Male
+                  <input type="radio" name="fgender" id="fgender-female" value="female" disabled> Female<br><br>
+                College      :   <input type="text" name="fclg" value="Kongu Engineering College" disabled><br><br>
+                Email        :   <input type="email" name="femail" id="femail" placeholder="Email" disabled><br><br>
+                Mobile no    :   <input type="tel" name="fmobile" id="fmobile" placeholder="Mobile Number" disabled><br><br>
+        Courses      :   <select name="fcourse" id="fcourse" disabled>
+                                   <option value="">Select Course</option>
+                                   <option value="BE">BE</option>
+                                   <option value="BTech">BTech</option>
+                                 </select><br><br>
+          Department   :  <select name="fdept" id="fdept" disabled>
+                                   <option value="">Select Department</option>
+                                   <option value="ece">ECE</option>
+                                   <option value="cse">CSE</option>
+                                   <option value="it">IT</option>
+                                   <option value="eee">EEE</option>
+                                   <option value="mech">Mechanical</option>
+                                   <option value="civil">Civil</option>
+                                </select><br><br>
+                            </pre>   
+           <center> <input type="submit" value="Submit">  
+            <input type="reset" value="Clear form"></center>
+    </form></div></center>
+    <script>
+        const fmname = document.getElementById('fmname');
+        const flname = document.getElementById('flname');
+        const fdate = document.getElementById('fdate');
+        const faddress = document.getElementById('faddress');
+        const femail = document.getElementById('femail');
+        const fmobile = document.getElementById('fmobile');
+        const fcourse = document.getElementById('fcourse');
+        const fdept = document.getElementById('fdept');
+        const fgenderMale = document.getElementById('fgender-male');
+        const fgenderFemale = document.getElementById('fgender-female');
+
+        ffname.addEventListener('keydown', () => {
+            fmname.removeAttribute('disabled');
+        });
+
+        fmname.addEventListener('keydown', () => {
+            flname.removeAttribute('disabled');
+        });
+
+        flname.addEventListener('keydown', () => {
+            fdate.removeAttribute('disabled');
+        });
+
+        fdate.addEventListener('change', () => {
+            faddress.removeAttribute('disabled');
+        });
+
+        faddress.addEventListener('keydown', () => {
+            fgenderMale.removeAttribute('disabled');
+            fgenderFemale.removeAttribute('disabled');
+        });
+
+        fgenderMale.addEventListener('click', () => {
+            femail.removeAttribute('disabled');
+        });
+
+        fgenderFemale.addEventListener('click', () => {
+            femail.removeAttribute('disabled');
+        });
+
+        femail.addEventListener('keydown', () => {
+            fmobile.removeAttribute('disabled');
+        });
+
+        fmobile.addEventListener('keydown', () => {
+            fcourse.removeAttribute('disabled');
+        });
+
+        fcourse.addEventListener('change', () => {
+            fdept.removeAttribute('disabled');
+        });
+    </script>
+
+</body>
+</html>
